@@ -1,10 +1,12 @@
 package ru.stqa.training.selenium;
 
-import org.junit.After;
-import org.junit.Before;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 /**
  * Вспомогательный класс
@@ -16,15 +18,19 @@ public class BaseHelper {
     WebDriver driver;
     WebDriverWait wait;
 
-    @Before
+    @BeforeClass
     public void start() {
-//        driver = new ChromeDriver();
-       driver = new FirefoxDriver();
-//        driver = new InternetExplorerDriver();
+        driver = new ChromeDriver();
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability(FirefoxDriver.MARIONETTE, false);
+//        driver = new FirefoxDriver(
+//                new FirefoxBinary(new File("C:\\Program Files\\Nightly\\firefox.exe")),
+//                new FirefoxProfile(), capabilities);
+        //      driver = new InternetExplorerDriver();
         wait = new WebDriverWait(driver, 10);
     }
 
-    @After
+    @AfterClass
     public void stop() {
         driver.quit();
     }
@@ -33,7 +39,7 @@ public class BaseHelper {
      * получение XPath
      *
      * @param attribute название арибута
-     * @param value значение атрибута
+     * @param value     значение атрибута
      * @return
      */
     public String getXPathByAtt(String attribute, String value) {
@@ -48,5 +54,18 @@ public class BaseHelper {
      */
     public String getXPathByNameAtt(String value) {
         return getXPathByAtt("name", value);
+    }
+
+    public boolean isElementPresent(By locator) {
+        try {
+            driver.findElement(locator);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean areElementsPresent(By locator) {
+        return driver.findElements(locator).size() > 0;
     }
 }

@@ -1,9 +1,9 @@
 
 package ru.stqa.training.selenium;
 
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.Test;
 
 /**
  * лекция: 2. Первые шаги: пробежимся по верхам
