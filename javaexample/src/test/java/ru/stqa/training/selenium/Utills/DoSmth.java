@@ -1,4 +1,4 @@
-package ru.stqa.training.selenium.Utills;
+package ru.stqa.training.selenium.utills;
 
 /**
  * интерфейс для вспомогательных действий

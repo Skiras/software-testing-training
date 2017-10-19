@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import ru.stqa.training.selenium.Utills.DoSmth;
+import ru.stqa.training.selenium.utills.DoSmth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,8 @@ public class BaseHelper {
 //        driver = new FirefoxDriver(
 //                new FirefoxBinary(new File("C:\\Program Files\\Nightly\\firefox.exe")),
 //                new FirefoxProfile(), capabilities);
-    //      driver = new InternetExplorerDriver();
+//          driver = new InternetExplorerDriver();
+//    driver = new FirefoxDriver();
     wait = new WebDriverWait(driver, 10);
   }
 
