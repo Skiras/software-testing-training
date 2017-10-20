@@ -2,6 +2,7 @@ package ru.stqa.training.selenium;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -9,6 +10,7 @@ import ru.stqa.training.selenium.utills.DoSmth;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Вспомогательный класс
@@ -91,5 +93,38 @@ public class BaseHelper {
     doSmth.doSomething();
     driver.close();
     driver.switchTo().window(getCurrentTabs().get(0));
+  }
+
+  /**
+   * Заполнить текстовое поле переданным значением
+   *
+   * @param xpath
+   * @param text
+   */
+  public void fillField(String xpath, String text) {
+    driver.findElement(By.xpath(xpath)).sendKeys(text);
+  }
+
+  /**
+   * Выбрать значение в выпадающем списке
+   *
+   * @param xpath
+   * @param value
+   */
+  public void selectValue(String xpath, String value) {
+    Select select = new Select(driver.findElement(By.xpath(xpath)));
+    select.selectByVisibleText(value);
+  }
+
+  /**
+   * Выбрать случайное значение в выпадающем списке
+   *
+   * @param xpath
+   */
+  public void selectRandomValue(String xpath) {
+    Select select = new Select(driver.findElement(By.xpath(xpath)));
+    select.selectByIndex(select.getOptions().size() > 1 ?
+            new Random().nextInt(select.getOptions().size() - 1) :
+            0);
   }
 }
