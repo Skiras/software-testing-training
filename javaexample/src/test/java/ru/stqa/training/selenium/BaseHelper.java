@@ -106,6 +106,17 @@ public class BaseHelper {
   }
 
   /**
+   * Заполнить текстовое поле переданным значением
+   *
+   * @param xpath
+   * @param text
+   */
+  public void fillFieldWithClear(String xpath, String text) {
+    driver.findElement(By.xpath(xpath)).clear();
+    fillField(xpath, text);
+  }
+
+  /**
    * Выбрать значение в выпадающем списке
    *
    * @param xpath
@@ -123,8 +134,20 @@ public class BaseHelper {
    */
   public void selectRandomValue(String xpath) {
     Select select = new Select(driver.findElement(By.xpath(xpath)));
-    select.selectByIndex(select.getOptions().size() > 1 ?
-            new Random().nextInt(select.getOptions().size() - 1) :
+    select.selectByIndex(select.getOptions().size() > 0 ?
+            new Random().nextInt(select.getOptions().size()) :
             0);
+  }
+
+  public void clickOnElement(String xpath) {
+    driver.findElement(By.xpath(xpath)).click();
+  }
+
+  public void selectAll(String xpath) {
+    List<WebElement> elements = driver.findElements(By.xpath(xpath));
+    for (WebElement element : elements) {
+      if (!element.isSelected())
+        element.click();
+    }
   }
 }
