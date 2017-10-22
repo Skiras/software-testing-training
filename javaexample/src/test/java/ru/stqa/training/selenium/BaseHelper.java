@@ -93,7 +93,8 @@ public class BaseHelper {
   public void switchTabDoSmthClose(WebElement element, DoSmth doSmth) {
     element.sendKeys(selectLinkOpeninNewTab);
     driver.switchTo().window(getCurrentTabs().get(1));
-    doSmth.doSomething();
+    if(doSmth != null)
+      doSmth.doSomething();
     driver.close();
     driver.switchTo().window(getCurrentTabs().get(0));
   }
@@ -164,5 +165,15 @@ public class BaseHelper {
         return handles.size() > 0 ? handles.iterator().next() : null;
       }
     };
+  }
+
+  public void backAndForth(WebElement element) {
+    String originalWindow = driver.getWindowHandle();
+    Set<String> existingWindows = driver.getWindowHandles();
+    element.click();
+    String newWindow = wait.until(anyWindowOtherThan(existingWindows));
+    driver.switchTo().window(newWindow);
+    driver.close();
+    driver.switchTo().window(originalWindow);
   }
 }

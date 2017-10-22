@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * лекция: 8. Окна и диалоги
@@ -24,15 +23,5 @@ public class Task14 extends LiteCartLoginTest {
     for (WebElement element : links) {
       backAndForth(element);
     }
-  }
-
-  private void backAndForth(WebElement element) {
-    String originalWindow = driver.getWindowHandle();
-    Set<String> existingWindows = driver.getWindowHandles();
-    element.click();
-    String newWindow = wait.until(anyWindowOtherThan(existingWindows));
-    driver.switchTo().window(newWindow);
-    driver.close();
-    driver.switchTo().window(originalWindow);
   }
 }
