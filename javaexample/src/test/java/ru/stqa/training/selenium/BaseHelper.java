@@ -2,15 +2,18 @@ package ru.stqa.training.selenium;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import ru.stqa.training.selenium.utills.DoSmth;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * Вспомогательный класс
@@ -149,5 +152,17 @@ public class BaseHelper {
       if (!element.isSelected())
         element.click();
     }
+  }
+
+  public ExpectedCondition<String> anyWindowOtherThan(Set<String> oldWindows) {
+    return new ExpectedCondition<String>() {
+      @Nullable
+      @Override
+      public String apply(@Nullable WebDriver input) {
+        Set<String> handles = driver.getWindowHandles();
+        handles.removeAll(oldWindows);
+        return handles.size() > 0 ? handles.iterator().next() : null;
+      }
+    };
   }
 }
