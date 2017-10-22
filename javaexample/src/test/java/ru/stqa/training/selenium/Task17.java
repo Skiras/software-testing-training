@@ -5,6 +5,8 @@ package ru.stqa.training.selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.logging.LogEntry;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -21,7 +23,9 @@ public class Task17 extends LiteCartLoginTest {
     List<WebElement> elements = driver.findElements(By.xpath("//*[@class='dataTable']//img/following-sibling::a"));
     for (WebElement element : elements) {
       switchTabDoSmthClose(element, null);
-      driver.manage().logs().get("browser").getAll().forEach(System.out::println);
+      List<LogEntry> logs = driver.manage().logs().get("browser").getAll();
+      Assert.assertTrue(logs.isEmpty());
+      logs.forEach(System.out::println);
     }
   }
 }
