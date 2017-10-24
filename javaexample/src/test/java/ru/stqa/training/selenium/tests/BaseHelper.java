@@ -1,4 +1,4 @@
-package ru.stqa.training.selenium;
+package ru.stqa.training.selenium.tests;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,8 +22,8 @@ import java.util.Set;
  */
 public class BaseHelper {
 
-  WebDriver driver;
-  WebDriverWait wait;
+  protected WebDriver driver;
+  protected WebDriverWait wait;
 
   // клавиши для открытия новой вкладки через ссылку
   String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL, Keys.RETURN);

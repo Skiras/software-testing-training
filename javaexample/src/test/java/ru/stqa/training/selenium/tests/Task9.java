@@ -1,7 +1,7 @@
 /**
  * Created by Anton on 15 Окт., 2017.
  */
-package ru.stqa.training.selenium;
+package ru.stqa.training.selenium.tests;
 
 import com.google.common.collect.Ordering;
 import org.openqa.selenium.By;

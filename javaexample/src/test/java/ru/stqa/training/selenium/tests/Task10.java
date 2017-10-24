@@ -1,7 +1,7 @@
 /**
  * Created by Anton on 15 Окт., 2017.
  */
-package ru.stqa.training.selenium;
+package ru.stqa.training.selenium.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
