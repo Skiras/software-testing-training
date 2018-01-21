@@ -18,7 +18,7 @@ public class ProductPage extends Page {
 
   @FindBy(xpath = "(//*[@class='quantity'])[1]")
   public WebElement amountOfProducts;
-  
+
   private int getAmountOfProductsInCart() {
     return Integer.parseInt(amountOfProducts.getText());
   }
