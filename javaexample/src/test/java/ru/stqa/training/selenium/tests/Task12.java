@@ -3,16 +3,20 @@
  */
 package ru.stqa.training.selenium.tests;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.training.selenium.models.Product;
+
+import java.security.Key;
+import java.util.Arrays;
 
 /**
  * лекция: 6. Действия с элементами
  * задание: Задание 12. Сделайте сценарий добавления товара
  */
-public class Task12 extends LiteCartLoginTest {
+public class Task12 extends LiteCartAdminLoginTest {
 
   @Test
   public void addNewProductTest() {
@@ -20,7 +24,7 @@ public class Task12 extends LiteCartLoginTest {
     clickOnElement("//*[text()=' Add New Product']");
     Product product = new Product();
     fillNewProductInfo(product);
-    clickOnElement(getXPathByNameAtt("save"));
+    clickOnElement("//*[@name='save']");
     Assert.assertTrue(isElementPresent(By.xpath("//a[text()='" + product.getName() + "']")));
   }
 
@@ -37,8 +41,8 @@ public class Task12 extends LiteCartLoginTest {
     selectRandomValue(getXPathByNameAtt("delivery_status_id"));
     selectRandomValue(getXPathByNameAtt("sold_out_status_id"));
     fillField(getXPathByNameAtt("new_images[]"), product.getImagePath());
-    fillField(getXPathByNameAtt("date_valid_from"), product.getDateValidFrom());
-    fillField(getXPathByNameAtt("date_valid_to"), product.getDateValidTo());
+    fillDateField(driver, getXPathByNameAtt("date_valid_from"), product.getDateValidFrom());
+    fillDateField(driver, getXPathByNameAtt("date_valid_to"), product.getDateValidTo());
     clickOnElement("//*[text()='Information']");
     wait.until(d -> d.findElement(By.xpath(getXPathByNameAtt("manufacturer_id"))));
     selectRandomValue(getXPathByNameAtt("manufacturer_id"));
@@ -55,5 +59,24 @@ public class Task12 extends LiteCartLoginTest {
     selectRandomValue(getXPathByNameAtt("tax_class_id"));
     fillField(getXPathByNameAtt("prices[USD]"), product.getPriceUSD());
     fillField(getXPathByNameAtt("prices[EUR]"), product.getPriceEUR());
+  }
+
+  /**
+   * Метод для заполнения поля с датой (поле нельзя заполнить привычным способом,
+   * т.к. для вводы значения года необходимо переключиться на это поле через нажатие клавиши TAB)
+   *
+   * @param driver
+   * @param xpath
+   * @param date
+   */
+  public void fillDateField(WebDriver driver, String xpath, String date) {
+    WebElement field = driver.findElement(By.xpath(xpath));
+    date = date.replaceFirst("\\.", "");
+
+    field.click();
+    Arrays.stream(date.split("\\.")).forEach(e -> {
+      field.sendKeys(e);
+      field.sendKeys(Keys.TAB);
+    });
   }
 }

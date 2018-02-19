@@ -21,7 +21,7 @@ public class Task13 extends BaseHelper {
   @Test
   public void cartTest() {
     // 1) открыть главную страницу
-    driver.get("http://localhost/litecart/en/");
+    driver.get("http://localhost:8000/litecart/en/");
     for(; i < 4; i++) {
       // 2) открыть первый товар из списка
       clickOnElement("(//*[@class='product column shadow hover-light'])[1]");

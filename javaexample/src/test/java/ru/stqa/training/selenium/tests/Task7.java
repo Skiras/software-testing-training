@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 /**
  * лекция: 4. Поиск элементов
  * задание: Задание 7. Сделайте сценарий, проходящий по всем разделам админки
- * используем {@link LiteCartLoginTest} в качестве предэтапа
+ * используем {@link LiteCartAdminLoginTest} в качестве предэтапа
  */
-public class Task7 extends LiteCartLoginTest {
+public class Task7 extends LiteCartAdminLoginTest {
 
     @Test
     public void sectionTest() {

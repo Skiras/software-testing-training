@@ -17,13 +17,13 @@ import java.util.stream.Collectors;
 /**
  * лекция: 5. Получение свойств элементов
  * задание: Задание 9. Проверить сортировку стран и геозон в админке
- * используем {@link LiteCartLoginTest} в качестве предэтапа
+ * используем {@link LiteCartAdminLoginTest} в качестве предэтапа
  */
-public class Task9 extends LiteCartLoginTest {
+public class Task9 extends LiteCartAdminLoginTest {
 
   @Test(description = "тест 1) страницы со странами")
   public void sortCountriesTest() {
-    driver.get("http://localhost/litecart/admin/?app=countries&doc=countries");
+    driver.get("http://localhost:8000/litecart/admin/?app=countries&doc=countries");
     List<WebElement> countries = driver.findElements(By.xpath("//tr[@class='row']//a[text()!='']"));
     // а) проверяем, расположены ли страны в алфавитном порядке
     Assert.assertTrue(isAlphabetically(countries, WebElement::getText));

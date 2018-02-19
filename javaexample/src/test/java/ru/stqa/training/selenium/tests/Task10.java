@@ -25,7 +25,7 @@ public class Task10 extends BaseHelper {
   @Test
   public void goodsPageTest() {
     // открыть главную страницу
-    driver.get("http://localhost/litecart/en/");
+    driver.get("http://localhost:8000/litecart/en/");
     WebElement title = driver.findElement(By.xpath(firstGoodsPath + "//*[@class='name']"));
     WebElement regularPrice = driver.findElement(By.xpath(firstGoodsPath + regularPricePath));
     WebElement campaignPrice = driver.findElement(By.xpath(firstGoodsPath + campaignPricePath));

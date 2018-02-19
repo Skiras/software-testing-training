@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Admin test suite" verbose="1" parallel="classes">
+    <test name="Admin test">
+        <classes>
+            <class name="ru.stqa.training.selenium.tests.LiteCartAdminLoginTest">
+
+            </class>
+
+            <class name="ru.stqa.training.selenium.tests.Task7">
+
+            </class>
+
+            <class name="ru.stqa.training.selenium.tests.Task9">
+
+            </class>
+
+            <class name="ru.stqa.training.selenium.tests.Task12">
+
+            </class>
+
+            <class name="ru.stqa.training.selenium.tests.Task14">
+
+            </class>
+
+            <class name="ru.stqa.training.selenium.tests.Task17">
+
+            </class>
+        </classes>
+    </test>
+</suite>

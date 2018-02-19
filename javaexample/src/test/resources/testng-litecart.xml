@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Admin test suite" verbose="1" parallel="classes">
+    <test name="Admin test">
+        <classes>
+            <class name="ru.stqa.training.selenium.tests.Task8"></class>
+            <class name="ru.stqa.training.selenium.tests.Task10"></class>
+            <class name="ru.stqa.training.selenium.tests.Task11"></class>
+            <class name="ru.stqa.training.selenium.tests.Task13"></class>
+            <class name="ru.stqa.training.selenium.tests.Task19"></class>
+        </classes>
+    </test>
+</suite>

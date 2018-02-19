@@ -13,13 +13,13 @@ import java.util.List;
 /**
  * лекция: 4. Поиск элементов
  * задание: Задание 8. Сделайте сценарий, проверяющий наличие стикеров у товаров
- * используем {@link LiteCartLoginTest} в качестве предэтапа
+ * используем {@link LiteCartAdminLoginTest} в качестве предэтапа
  */
 public class Task8 extends BaseHelper {
 
     @Test
     public void stickerTest() {
-        driver.get("http://localhost/litecart/en/");
+        driver.get("http://localhost:8000/litecart/en/");
         List<WebElement> goods = driver.findElements(
                 By.xpath("//*[@class='product column shadow hover-light']"));
         // для каждого элемента-товара проверяем наличие одного! стикера

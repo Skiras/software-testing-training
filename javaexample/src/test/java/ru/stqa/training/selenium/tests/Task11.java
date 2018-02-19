@@ -16,7 +16,7 @@ public class Task11 extends BaseHelper {
   @Test
   public void createUserTest() {
     // открыть главную страницу
-    driver.get("http://localhost/litecart/en/");
+    driver.get("http://localhost:8000/litecart/en/");
     // нажимаем кнопку регистрации
     driver.findElement(By.xpath("//*[text()='New customers click here']")).click();
     // создаем пользователя
