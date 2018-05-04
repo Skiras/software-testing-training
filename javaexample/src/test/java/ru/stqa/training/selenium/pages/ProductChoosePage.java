@@ -1,6 +1,3 @@
-/**
- * Created by Anton on 24 Окт., 2017.
- */
 package ru.stqa.training.selenium.pages;
 
 import org.openqa.selenium.By;
@@ -13,12 +10,12 @@ public class ProductChoosePage extends Page {
   }
 
   public ProductChoosePage open() {
-    driver.get("http://localhost/litecart/en/");
+    driver.get("http://localhost:8000/litecart/en/");
     return this;
   }
 
   public void chooseFirstProduct() {
     // открыть первый товар из списка
-    driver.findElement(By.xpath("(//*[@class='product column shadow hover-light'])[1]")).click();
+    driver.findElement(By.xpath("(//*[@class='Product column shadow hover-light'])[1]")).click();
   }
 }

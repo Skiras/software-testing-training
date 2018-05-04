@@ -30,7 +30,7 @@ public class BaseHelper {
   protected WebDriverWait wait;
 
   // клавиши для открытия новой вкладки через ссылку
-  String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL, Keys.RETURN);
+  private String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL, Keys.RETURN);
 
   @BeforeClass
   public void start() {
@@ -50,23 +50,10 @@ public class BaseHelper {
     driver.quit();
   }
 
-  /**
-   * получение XPath
-   *
-   * @param attribute название арибута
-   * @param value     значение атрибута
-   * @return
-   */
   public String getXPathByAtt(String attribute, String value) {
     return "//*[@" + attribute + "='" + value + "']";
   }
 
-  /**
-   * получение XPath с атрибутом @name
-   *
-   * @param value значение атрибута @name
-   * @return
-   */
   public String getXPathByNameAtt(String value) {
     return getXPathByAtt("name", value);
   }
@@ -103,22 +90,10 @@ public class BaseHelper {
     driver.switchTo().window(getCurrentTabs().get(0));
   }
 
-  /**
-   * Заполнить текстовое поле переданным значением
-   *
-   * @param xpath
-   * @param text
-   */
   public void fillField(String xpath, String text) {
     driver.findElement(By.xpath(xpath)).sendKeys(text);
   }
 
-  /**
-   * Заполнить текстовое поле переданным значением
-   *
-   * @param xpath
-   * @param text
-   */
   public void fillFieldWithClear(String xpath, String text) {
     driver.findElement(By.xpath(xpath)).clear();
     fillField(xpath, text);

@@ -1,6 +1,3 @@
-/**
- * Created by Anton on 22 Окт., 2017.
- */
 package ru.stqa.training.selenium.tests;
 
 import org.openqa.selenium.By;
@@ -24,14 +21,14 @@ public class Task13 extends BaseHelper {
     driver.get("http://localhost:8000/litecart/en/");
     for(; i < 4; i++) {
       // 2) открыть первый товар из списка
-      clickOnElement("(//*[@class='product column shadow hover-light'])[1]");
+      clickOnElement("(//*[@class='Product column shadow hover-light'])[1]");
       // 3) добавить его в корзину
       clickOnElement(getXPathByNameAtt("add_cart_product"));
       // 4) подождать, пока счётчик товаров в корзине обновится
       int count  = i;
       wait.until(d -> d.findElement(By.xpath("//a//*[@class='quantity']")).getText().equals(String.valueOf(count)));
       // 3) вернуться на главную страницу, повторить предыдущие шаги ещё два раза, чтобы в общей сложности в корзине было 3 единицы товара
-      driver.get("http://localhost/litecart/en/");
+      driver.get("http://localhost:8000/litecart/en/");
     }
     // 5) открыть корзину (в правом верхнем углу кликнуть по ссылке Checkout)
     clickOnElement("//a[contains(text(), 'Checkout')]");

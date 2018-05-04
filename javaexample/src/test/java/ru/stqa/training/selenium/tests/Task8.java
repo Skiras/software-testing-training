@@ -1,6 +1,3 @@
-/**
- * Created by Anton on 15 Окт., 2017.
- */
 package ru.stqa.training.selenium.tests;
 
 import org.openqa.selenium.By;
@@ -21,7 +18,7 @@ public class Task8 extends BaseHelper {
     public void stickerTest() {
         driver.get("http://localhost:8000/litecart/en/");
         List<WebElement> goods = driver.findElements(
-                By.xpath("//*[@class='product column shadow hover-light']"));
+                By.xpath("//*[@class='Product column shadow hover-light']"));
         // для каждого элемента-товара проверяем наличие одного! стикера
         for(WebElement element : goods) {
             Assert.assertTrue(element.findElements(
